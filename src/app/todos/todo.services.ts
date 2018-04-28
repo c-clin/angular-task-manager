@@ -1,8 +1,9 @@
+import { EventEmitter } from '@angular/core';
 import { Todo } from './todo.model';
 
 
 export class TodoService {
-
+    todosChanged = new EventEmitter<Todo[]>();
     private todos: Todo[] = [
         new Todo('Clean my room', false),
         new Todo('Feed my cats', false)
@@ -14,6 +15,8 @@ export class TodoService {
 
     addNewTodo(todo: string) {
         this.todos.push(new Todo(todo, false));
+        this.todosChanged.emit(this.todos.slice());
+
         console.log(this.todos);
     }
 
