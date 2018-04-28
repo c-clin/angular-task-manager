@@ -21,6 +21,10 @@ export class TodosComponent implements OnInit {
 
   onRemoveTodo(index: number) {
     this.todoService.removeTodo(index);
-    console.log(index);
+  }
+
+  onClickingCheckbox(index: number) {
+    this.todoService.checkCheckbox(index);
+    console.log(this.todos);
   }
 }

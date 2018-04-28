@@ -4,6 +4,7 @@ import { Todo } from './todo.model';
 
 export class TodoService {
     todosChanged = new EventEmitter<Todo[]>();
+    // made the todos private so it cannot be accessed from outside
     private todos: Todo[] = [
         new Todo('Clean my room', false),
         new Todo('Feed my cats', false)
@@ -20,6 +21,11 @@ export class TodoService {
 
     removeTodo(index: number) {
         this.todos.splice(index, 1);
+        this.todosChanged.emit(this.todos.slice());
+    }
+
+    checkCheckbox(index: number) {
+        this.todos[index].completed = !this.todos[index].completed;
         this.todosChanged.emit(this.todos.slice());
     }
 

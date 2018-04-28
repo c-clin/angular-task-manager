@@ -1,6 +1,9 @@
 <ul class="list-group">
-  <li class="list-group-item col-xs-8" *ngFor="let todo of todos; let i = index">
-    {{ i + 1 }}. {{ todo.task }}
+  <li 
+    class="list-group-item col-xs-8"
+    *ngFor="let todo of todos; let i = index"
+    [ngClass]="{completed: todo.completed == true}">
+    {{ i + 1 }}. {{ todo.task }} <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="onClickingCheckbox(i)" style="cursor:pointer">
     <button class="btn btn-danger pull-right" (click)="onRemoveTodo(i)">Delete</button>
   </li>
 </ul>
