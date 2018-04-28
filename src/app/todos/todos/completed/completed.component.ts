@@ -1,4 +1,6 @@
+import { TodoService } from './../../todo.services';
 import { Component, OnInit } from '@angular/core';
+import { Todo } from '../../todo.model';
 
 @Component({
   selector: 'app-completed',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./completed.component.css']
 })
 export class CompletedComponent implements OnInit {
+  completedTodos: Todo[];
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
+    this.completedTodos = this.todoService.getCompletedTodos();
   }
 
 }

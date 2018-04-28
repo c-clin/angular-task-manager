@@ -1,8 +1,8 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, OnInit } from '@angular/core';
 import { Todo } from './todo.model';
 
 
-export class TodoService {
+export class TodoService implements OnInit {
     todosChanged = new EventEmitter<Todo[]>();
     // made the todos private so it cannot be accessed from outside
     private todos: Todo[] = [
@@ -10,8 +10,29 @@ export class TodoService {
         new Todo('Feed my cats', false, false)
     ];
 
+    private active: Todo[];
+
+    private completed: Todo[];
+
+    ngOnInit() {
+    }
+
     getTodos() {
         return this.todos.slice();
+    }
+
+    getActiveTodos() {
+        this.active = this.todos.filter(
+            todo => todo.completed === false
+        );
+        return this.active.slice();
+    }
+
+    getCompletedTodos() {
+        this.completed = this.todos.filter(
+            todo => todo.completed === true
+        );
+        return this.completed.slice();
     }
 
     addNewTodo(todo: string) {
@@ -32,6 +53,7 @@ export class TodoService {
 
     checkCheckbox(index: number) {
         this.todos[index].completed = !this.todos[index].completed;
+        this.getActiveTodos();
         this.todosChanged.emit(this.todos.slice());
     }
 
