@@ -6,8 +6,8 @@ export class TodoService {
     todosChanged = new EventEmitter<Todo[]>();
     // made the todos private so it cannot be accessed from outside
     private todos: Todo[] = [
-        new Todo('Clean my room', false),
-        new Todo('Feed my cats', false)
+        new Todo('Clean my room', false, false),
+        new Todo('Feed my cats', false, false)
     ];
 
     getTodos() {
@@ -15,7 +15,7 @@ export class TodoService {
     }
 
     addNewTodo(todo: string) {
-        this.todos.push(new Todo(todo, false));
+        this.todos.push(new Todo(todo, false, false));
         this.todosChanged.emit(this.todos.slice());
     }
 

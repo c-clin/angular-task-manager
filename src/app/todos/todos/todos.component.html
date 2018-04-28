@@ -1,11 +1,12 @@
 <ul class="list-group">
-    <div *ngIf="!editMode">
+  <div *ngFor="let todo of todos; let i = index">
+    <div *ngIf="todo.edit == false">
       <li 
         class="list-group-item col-xs-12"
-        *ngFor="let todo of todos; let i = index"
         [ngClass]="{completed: todo.completed == true}">
-        {{ i + 1 }}. {{ todo.task }} 
         <input type="checkbox" class="form-check-input" (change)="onClickingCheckbox(i)" style="cursor:pointer">
+        {{ i + 1 }}. 
+        {{ todo.task }} 
         <button 
           class="btn btn-danger pull-right" 
           (click)="onRemoveTodo(i)">
@@ -14,17 +15,27 @@
         <button 
           class="btn btn-primary pull-right"
           style="margin-right: 5px"
-          (click)="onEditTodo(i)">Edit</button>
+          (click)="onEditTodo(i)">
+            Edit
+        </button>
       </li>
     </div>
-    <div class="row" *ngIf="editMode">
+    <!-- edit mode template -->
+    <div class="row" *ngIf="todo.edit == true">
       <div class="col-xs-10">
         <input type="text" class="form-control" [(ngModel)]="newTodoInput">
       </div>
       <div class="col-xs-2">
-        <button class="btn btn-success pull-right" (click)="onSaveEdit(i)">Save</button>
+        <button 
+          class="btn btn-danger pull-right"
+          (click)="onCancelEdit(i)">&#10008;</button>
+        <button 
+          class="btn btn-success pull-right" 
+          (click)="onSaveEdit(i)"
+          style="margin-right: 5px">&#10004;</button>
       </div>
     </div>
+  </div>
 </ul>
 
 

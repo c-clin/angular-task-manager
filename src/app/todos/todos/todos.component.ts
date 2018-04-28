@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo.model';
 
 @Component({
-  selector: "app-todos",
-  templateUrl: "./todos.component.html",
-  styleUrls: ["./todos.component.css"]
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
   todos: Todo[];
@@ -27,16 +27,17 @@ export class TodosComponent implements OnInit {
   }
 
   onEditTodo(index: number) {
+    this.todos[index].edit = true;
     this.newTodoInput = this.todos[index].task;
-    this.editMode = true;
-    this.id = index;
+  }
+
+  onCancelEdit(index: number) {
+    this.todos[index].edit = false;
   }
 
   onSaveEdit(index: number) {
-    console.log('index is ' + this.id);
-    console.log(this.newTodoInput);
-    this.todoService.updateTodo(this.id, this.newTodoInput);
-    this.editMode = false;
+    this.todoService.updateTodo(index, this.newTodoInput);
+    this.todos[index].edit = false;
   }
 
   onClickingCheckbox(index: number) {
