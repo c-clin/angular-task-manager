@@ -24,6 +24,12 @@ export class TodoService {
         this.todosChanged.emit(this.todos.slice());
     }
 
+    updateTodo(index: number, text: string) {
+        console.log(text);
+        this.todos[index].task = text;
+        this.todosChanged.emit(this.todos.slice());
+    }
+
     checkCheckbox(index: number) {
         this.todos[index].completed = !this.todos[index].completed;
         this.todosChanged.emit(this.todos.slice());

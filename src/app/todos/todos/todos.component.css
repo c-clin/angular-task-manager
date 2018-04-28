@@ -1,4 +1,9 @@
 .completed {
     color: red;
     text-decoration: line-through;
+    font-style: italic;
 }
+
+/* .btn-primary {
+    margin-right: 5px;
+} */

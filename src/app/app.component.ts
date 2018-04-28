@@ -8,7 +8,7 @@ import { TodoService } from './todos/todo.services';
   providers: [TodoService]
 })
 export class AppComponent implements OnInit {
-  title = 'My Todo App';
+  title = 'Angular Todo App';
   todoTextInput: string;
   @ViewChild('todoTextInput') textInput: ElementRef;
 
