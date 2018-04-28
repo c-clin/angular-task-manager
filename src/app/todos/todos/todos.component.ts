@@ -10,16 +10,17 @@ import { Todo } from '../todo.model';
 export class TodosComponent implements OnInit {
   todos: Todo[];
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService) {}
 
   ngOnInit() {
     this.todos = this.todoService.getTodos();
-    this.todoService.todosChanged
-      .subscribe(
-        (todos: Todo[]) => {
-          this.todos = todos;
-        }
-      );
+    this.todoService.todosChanged.subscribe((todos: Todo[]) => {
+      this.todos = todos;
+    });
   }
 
+  onRemoveTodo(index: number) {
+    this.todoService.removeTodo(index);
+    console.log(index);
+  }
 }

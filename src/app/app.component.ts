@@ -17,7 +17,6 @@ export class AppComponent {
 
   addNewTodo() {
     this.todoService.addNewTodo(this.textInput.nativeElement.value);
-    console.log(this.textInput.nativeElement.value);
   }
 
 }

@@ -1,5 +1,6 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let todo of todos">
-    {{ todo.task  }}
+  <li class="list-group-item col-xs-8" *ngFor="let todo of todos; let i = index">
+    {{ i + 1 }}. {{ todo.task }}
+    <button class="btn btn-danger pull-right" (click)="onRemoveTodo(i)">Delete</button>
   </li>
 </ul>

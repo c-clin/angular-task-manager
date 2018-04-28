@@ -16,8 +16,11 @@ export class TodoService {
     addNewTodo(todo: string) {
         this.todos.push(new Todo(todo, false));
         this.todosChanged.emit(this.todos.slice());
+    }
 
-        console.log(this.todos);
+    removeTodo(index: number) {
+        this.todos.splice(index, 1);
+        this.todosChanged.emit(this.todos.slice());
     }
 
 
