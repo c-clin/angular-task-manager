@@ -4,6 +4,7 @@ import { Todo } from './todo.model';
 
 export class TodoService implements OnInit {
     todosChanged = new EventEmitter<Todo[]>();
+    activeTodosChanged = new EventEmitter<Todo[]>();
     // made the todos private so it cannot be accessed from outside
     private todos: Todo[] = [
         new Todo('Clean my room', false, false),
@@ -38,6 +39,7 @@ export class TodoService implements OnInit {
     addNewTodo(todo: string) {
         this.todos.push(new Todo(todo, false, false));
         this.todosChanged.emit(this.todos.slice());
+        this.activeTodosChanged.emit(this.active.slice());
     }
 
     removeTodo(index: number) {
@@ -45,15 +47,32 @@ export class TodoService implements OnInit {
         this.todosChanged.emit(this.todos.slice());
     }
 
+    removeActiveAndCompletedTodo(task: string) {
+        for (const todo of this.todos) {
+            if (todo.task === task) {
+                const index = this.todos.indexOf(todo);
+                this.todos.splice(index, 1);
+            }
+        }
+        this.todosChanged.emit(this.todos.slice());
+    }
+
     updateTodo(index: number, text: string) {
-        console.log(text);
         this.todos[index].task = text;
         this.todosChanged.emit(this.todos.slice());
     }
 
     checkCheckbox(index: number) {
         this.todos[index].completed = !this.todos[index].completed;
-        this.getActiveTodos();
+        this.todosChanged.emit(this.todos.slice());
+    }
+
+    checkActiveAndCompleteCheckbox(task: string) {
+        for (const todo of this.todos) {
+            if (todo.task === task) {
+                todo.completed = !todo.completed;
+            }
+        }
         this.todosChanged.emit(this.todos.slice());
     }
 

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    console.log(this.todoTextInput);
+
   }
 
   addNewTodo() {

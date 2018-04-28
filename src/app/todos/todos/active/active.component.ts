@@ -15,10 +15,18 @@ export class ActiveComponent implements OnInit {
 
   ngOnInit() {
     this.activeTodos = this.todoService.getActiveTodos();
+    this.todoService.todosChanged.subscribe((todos: Todo[]) => {
+      this.activeTodos = todos;
+    });
   }
 
-  onRemoveTodo(index: number) {
-    this.todoService.removeTodo(index);
+  updateActiveTodos() {
+    this.activeTodos = this.todoService.getActiveTodos();
+  }
+
+  onRemoveTodo(task: string) {
+    this.todoService.removeActiveAndCompletedTodo(task);
+    this.updateActiveTodos();
   }
 
   onEditTodo(index: number) {
@@ -35,9 +43,8 @@ export class ActiveComponent implements OnInit {
     this.activeTodos[index].edit = false;
   }
 
-  onClickingCheckbox(index: number) {
-    this.todoService.checkCheckbox(index);
-    this.activeTodos = this.todoService.getActiveTodos();
-    console.log(this.activeTodos);
+  onClickingCheckbox(task: string) {
+    this.todoService.checkActiveAndCompleteCheckbox(task);
+    this.updateActiveTodos();
   }
 }

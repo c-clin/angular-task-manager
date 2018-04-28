@@ -40,6 +40,5 @@ export class TodosComponent implements OnInit {
 
   onClickingCheckbox(index: number) {
     this.todoService.checkCheckbox(index);
-    console.log(this.todos);
   }
 }
