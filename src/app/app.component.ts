@@ -10,12 +10,12 @@ import { TodoService } from './todos/todo.services';
 export class AppComponent implements OnInit {
   title = 'Angular Todo App';
   todoTextInput: string;
-  @ViewChild('todoTextInput') textInput: ElementRef;
+  @ViewChild('todoTextInputRef') textInput: ElementRef;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todoTextInput = this.textInput.nativeElement.value;
+    console.log(this.todoTextInput);
   }
 
   addNewTodo() {
