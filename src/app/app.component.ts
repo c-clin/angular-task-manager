@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { TodoService } from './todos/todo.services';
 
 @Component({
@@ -7,16 +7,20 @@ import { TodoService } from './todos/todo.services';
   styleUrls: ['./app.component.css'],
   providers: [TodoService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'My Todo App';
   todoTextInput: string;
   @ViewChild('todoTextInput') textInput: ElementRef;
 
   constructor(private todoService: TodoService) { }
 
+  ngOnInit() {
+    this.todoTextInput = this.textInput.nativeElement.value;
+  }
 
   addNewTodo() {
     this.todoService.addNewTodo(this.textInput.nativeElement.value);
+    this.textInput.nativeElement.value = '';
   }
 
 }
