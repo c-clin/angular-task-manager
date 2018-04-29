@@ -10,6 +10,7 @@ import { TodoService } from './../../todo.services';
 export class ActiveComponent implements OnInit {
   activeTodos: Todo[];
   activeNewTodoInput: string;
+  originalInput: string;
 
   constructor(private todoService: TodoService) {}
 
@@ -32,6 +33,7 @@ export class ActiveComponent implements OnInit {
   onEditTodo(index: number) {
     this.activeTodos[index].edit = true;
     this.activeNewTodoInput = this.activeTodos[index].task;
+    this.originalInput = this.activeNewTodoInput;
   }
 
   onCancelEdit(index: number) {
@@ -39,7 +41,8 @@ export class ActiveComponent implements OnInit {
   }
 
   onSaveEdit(index: number) {
-    this.todoService.updateTodo(index, this.activeNewTodoInput);
+    this.todoService.updateActiveAndCompletedTodo(this.originalInput, this.activeNewTodoInput);
+    this.updateActiveTodos();
     this.activeTodos[index].edit = false;
   }
 

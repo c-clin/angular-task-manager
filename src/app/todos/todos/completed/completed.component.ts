@@ -10,11 +10,12 @@ import { Todo } from '../../todo.model';
 export class CompletedComponent implements OnInit {
   completedTodos: Todo[];
   completedNewTodoInput: string;
+  originalInput: string;
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {
-    this.completedTodos = this.todoService.getCompletedTodos();
+    this.updateCompletedTodos();
   }
 
   updateCompletedTodos() {
@@ -22,7 +23,6 @@ export class CompletedComponent implements OnInit {
   }
 
   onRemoveTodo(task: string) {
-    console.log(task);
     this.todoService.removeActiveAndCompletedTodo(task);
     this.updateCompletedTodos();
   }
@@ -30,6 +30,7 @@ export class CompletedComponent implements OnInit {
   onEditTodo(index: number) {
     this.completedTodos[index].edit = true;
     this.completedNewTodoInput = this.completedTodos[index].task;
+    this.originalInput = this.completedNewTodoInput;
   }
 
   onCancelEdit(index: number) {
@@ -37,7 +38,9 @@ export class CompletedComponent implements OnInit {
   }
 
   onSaveEdit(index: number) {
-    this.todoService.updateTodo(index, this.completedNewTodoInput);
+    console.log(this.originalInput, this.completedNewTodoInput);
+    this.todoService.updateActiveAndCompletedTodo(this.originalInput, this.completedNewTodoInput);
+    this.updateCompletedTodos();
     this.completedTodos[index].edit = false;
   }
 

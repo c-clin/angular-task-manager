@@ -5,6 +5,8 @@ import { Todo } from './todo.model';
 export class TodoService implements OnInit {
     todosChanged = new EventEmitter<Todo[]>();
     activeTodosChanged = new EventEmitter<Todo[]>();
+    completedTodosChanged = new EventEmitter<Todo[]>();
+
     // made the todos private so it cannot be accessed from outside
     private todos: Todo[] = [
         new Todo('Clean my room', false, false),
@@ -16,6 +18,7 @@ export class TodoService implements OnInit {
     private completed: Todo[];
 
     ngOnInit() {
+
     }
 
     getTodos() {
@@ -26,6 +29,7 @@ export class TodoService implements OnInit {
         this.active = this.todos.filter(
             todo => todo.completed === false
         );
+        // console.log('get active todos active is ' + this.active);
         return this.active.slice();
     }
 
@@ -39,6 +43,7 @@ export class TodoService implements OnInit {
     addNewTodo(todo: string) {
         this.todos.push(new Todo(todo, false, false));
         this.todosChanged.emit(this.todos.slice());
+        console.log('active is ' + this.active);
         this.activeTodosChanged.emit(this.active.slice());
     }
 
@@ -58,8 +63,21 @@ export class TodoService implements OnInit {
     }
 
     updateTodo(index: number, text: string) {
+        // 1. updated the task name on todo list
         this.todos[index].task = text;
         this.todosChanged.emit(this.todos.slice());
+        console.log('todo is ' + this.todos, 'activeTodos is ' + this.active, 'completedTodos is ' + this.completed);
+    }
+
+    updateActiveAndCompletedTodo(oldTask: string, newTask: string) {
+        // given the index on active
+        for (const todo of this.todos) {
+            if (todo.task === oldTask) {
+                const index = this.todos.indexOf(todo);
+                this.todos[index].task = newTask;
+                this.todosChanged.emit(this.todos.slice());
+            }
+        }
     }
 
     checkCheckbox(index: number) {
@@ -75,7 +93,6 @@ export class TodoService implements OnInit {
         }
         this.todosChanged.emit(this.todos.slice());
     }
-
-
-
 }
+
+// TODOS:
