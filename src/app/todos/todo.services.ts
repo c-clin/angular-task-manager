@@ -29,7 +29,6 @@ export class TodoService implements OnInit {
         this.active = this.todos.filter(
             todo => todo.completed === false
         );
-        // console.log('get active todos active is ' + this.active);
         return this.active.slice();
     }
 
@@ -57,9 +56,9 @@ export class TodoService implements OnInit {
             if (todo.task === task) {
                 const index = this.todos.indexOf(todo);
                 this.todos.splice(index, 1);
+                return this.todosChanged.emit(this.todos.slice());
             }
         }
-        this.todosChanged.emit(this.todos.slice());
     }
 
     updateTodo(index: number, text: string) {
@@ -72,7 +71,7 @@ export class TodoService implements OnInit {
             if (todo.task === oldTask) {
                 const index = this.todos.indexOf(todo);
                 this.todos[index].task = newTask;
-                this.todosChanged.emit(this.todos.slice());
+                return this.todosChanged.emit(this.todos.slice());
             }
         }
     }
@@ -86,9 +85,9 @@ export class TodoService implements OnInit {
         for (const todo of this.todos) {
             if (todo.task === task) {
                 todo.completed = !todo.completed;
+                return this.todosChanged.emit(this.todos.slice());
             }
         }
-        this.todosChanged.emit(this.todos.slice());
     }
 
     toggleStar(index: number) {
@@ -101,9 +100,9 @@ export class TodoService implements OnInit {
         for (const todo of this.todos) {
             if (todo.task === text) {
                 todo.star = !todo.star;
+                return this.todosChanged.emit(this.todos.slice());
             }
         }
-        this.todosChanged.emit(this.todos.slice());
     }
 }
 

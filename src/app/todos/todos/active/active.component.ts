@@ -7,6 +7,7 @@ import { TodoService } from './../../todo.services';
   templateUrl: './active.component.html',
   styleUrls: ['./active.component.css']
 })
+
 export class ActiveComponent implements OnInit {
   activeTodos: Todo[];
   activeNewTodoInput: string;
