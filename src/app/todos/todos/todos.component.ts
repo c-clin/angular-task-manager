@@ -26,7 +26,6 @@ export class TodosComponent implements OnInit {
 
   onEditTodo(index: number) {
     this.todos[index].edit = true;
-    // allows user to edit the original text
     this.newTodoInput = this.todos[index].task;
   }
 

@@ -14,9 +14,9 @@
     <!-- edit mode template -->
     <div class="row" *ngIf="todo.edit == true" style="margin-bottom: 5px">
       <div class="col-xs-10">
-        <input type="text" class="form-control" [(ngModel)]="completedNewTodoInput">
+        <input type="text" class="form-control" [(ngModel)]="completedNewTodoInput" style="height: 55px; margin-top: 20px">
       </div>
-      <div class="col-xs-2">
+      <div class="col-xs-2 pull-left" style="margin-top: 30px;">
         <button class="btn btn-danger pull-right" (click)="onCancelEdit(i)">&#10008;</button>
         <button class="btn btn-success pull-right" (click)="onSaveEdit(i)" style="margin-right: 5px">&#10004;</button>
       </div>
