@@ -3,3 +3,6 @@
     text-decoration: line-through;
 }
 
+.list-group-item-warning {
+    color: red;
+}

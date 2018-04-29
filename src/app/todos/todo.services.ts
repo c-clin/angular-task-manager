@@ -9,8 +9,8 @@ export class TodoService implements OnInit {
 
     // made the todos private so it cannot be accessed from outside
     private todos: Todo[] = [
-        new Todo('Clean my room', false, false),
-        new Todo('Feed my cats', false, false)
+        new Todo('Clean my room', false, false, false),
+        new Todo('Feed my cats', false, false, false)
     ];
 
     private active: Todo[];
@@ -41,7 +41,7 @@ export class TodoService implements OnInit {
     }
 
     addNewTodo(todo: string) {
-        this.todos.push(new Todo(todo, false, false));
+        this.todos.push(new Todo(todo, false, false, false));
         this.todosChanged.emit(this.todos.slice());
         console.log('active is ' + this.active);
         this.activeTodosChanged.emit(this.active.slice());
@@ -63,14 +63,11 @@ export class TodoService implements OnInit {
     }
 
     updateTodo(index: number, text: string) {
-        // 1. updated the task name on todo list
         this.todos[index].task = text;
         this.todosChanged.emit(this.todos.slice());
-        console.log('todo is ' + this.todos, 'activeTodos is ' + this.active, 'completedTodos is ' + this.completed);
     }
 
     updateActiveAndCompletedTodo(oldTask: string, newTask: string) {
-        // given the index on active
         for (const todo of this.todos) {
             if (todo.task === oldTask) {
                 const index = this.todos.indexOf(todo);
@@ -93,6 +90,21 @@ export class TodoService implements OnInit {
         }
         this.todosChanged.emit(this.todos.slice());
     }
+
+    toggleStar(index: number) {
+        this.todos[index].star = !this.todos[index].star;
+        this.todosChanged.emit(this.todos.slice());
+
+    }
+
+    toggleActiveAndCompletedStar(text: string) {
+        for (const todo of this.todos) {
+            if (todo.task === text) {
+                todo.star = !todo.star;
+            }
+        }
+        this.todosChanged.emit(this.todos.slice());
+    }
 }
 
-// TODOS:
+// TODO: fixed the code for active and completed methods

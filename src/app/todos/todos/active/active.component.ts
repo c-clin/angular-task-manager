@@ -50,4 +50,9 @@ export class ActiveComponent implements OnInit {
     this.todoService.checkActiveAndCompleteCheckbox(task);
     this.updateActiveTodos();
   }
+
+  onStar(index: number) {
+    this.todoService.toggleActiveAndCompletedStar(this.activeTodos[index].task);
+    this.updateActiveTodos();
+  }
 }

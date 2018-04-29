@@ -1,7 +1,10 @@
 <ul class="list-group">
   <div *ngFor="let todo of activeTodos; let i = index">
-    <div *ngIf="todo.edit == false">
-      <li class="list-group-item col-xs-12" style="margin-bottom: 5px">
+    <div *ngIf="todo.edit === false">
+      <li 
+        class="list-group-item col-xs-12" 
+        style="margin-bottom: 5px"
+        [ngClass]="{'list-group-item-warning': todo.star === true}">
         <input [checked]="todo.completed === true" type="checkbox" class="form-check-input" (change)="onClickingCheckbox(todo.task)" style="cursor:pointer"> {{ i + 1 }}. {{ todo.task }}
         <button class="btn btn-danger pull-right" (click)="onRemoveTodo(todo.task)">
           Delete
@@ -9,10 +12,16 @@
         <button class="btn btn-primary pull-right" style="margin-right: 5px" (click)="onEditTodo(i)">
           Edit
         </button>
+        <button 
+          class="btn btn-warning pull-right" 
+          style="margin-right: 5px"
+          (click)="onStar(i)">
+          &#9733;
+        </button>
       </li>
     </div>
     <!-- edit mode template -->
-    <div class="row" *ngIf="todo.edit == true" style="margin-bottom: 5px">
+    <div class="row" *ngIf="todo.edit === true" style="margin-bottom: 5px">
       <div class="col-xs-10">
         <input type="text" class="form-control" [(ngModel)]="activeNewTodoInput" style="height: 55px; margin-top: 20px">
       </div>
