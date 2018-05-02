@@ -21,6 +21,11 @@ export class TodoService implements OnInit {
 
     }
 
+    setTodos(todos: Todo[]) {
+        this.todos = todos;
+        this.todosChanged.emit(this.todos.slice());
+    }
+
     getTodos() {
         return this.todos.slice();
     }

@@ -11,18 +11,20 @@
         <button 
           class="btn btn-danger pull-right" 
           (click)="onRemoveTodo(i)">
-            Delete
+            <span class="glyphicon glyphicon-trash"></span>
         </button>
         <button 
           class="btn btn-primary pull-right"
           style="margin-right: 5px"
           (click)="onEditTodo(i)">
-            Edit
+            <span class="glyphicon glyphicon-pencil"></span>
         </button>
         <button 
           class="btn btn-warning pull-right" 
           style="margin-right: 5px"
-          (click)="onStar(i)">&#9733;</button>
+          (click)="onStar(i)">
+          <span class="glyphicon glyphicon-star"></span>
+        </button>
       </li>
     </div>
     <!-- edit mode template -->

@@ -18,6 +18,8 @@ export class TodosComponent implements OnInit {
     this.todoService.todosChanged.subscribe((todos: Todo[]) => {
       this.todos = todos;
     });
+    this.todoService.getActiveTodos();
+    this.todoService.getCompletedTodos();
   }
 
   onRemoveTodo(index: number) {

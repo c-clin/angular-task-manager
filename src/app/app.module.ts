@@ -9,6 +9,10 @@ import { ActiveComponent } from './todos/active/active.component';
 import { CompletedComponent } from './todos/completed/completed.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './todos/navigation/navigation.component';
+import { DataStorageService } from './data.storage.service';
+import { TodoService } from './todos/todo.services';
+import { HttpModule } from '@angular/http';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +20,16 @@ import { NavigationComponent } from './todos/navigation/navigation.component';
     TodosComponent,
     ActiveComponent,
     CompletedComponent,
-    NavigationComponent
+    NavigationComponent,
+    HeaderComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    HttpModule,
     FormsModule
   ],
-  providers: [],
+  providers: [TodoService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
