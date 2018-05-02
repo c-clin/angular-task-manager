@@ -1,7 +1,7 @@
-import { TodosComponent } from './todos/todos/todos.component';
+import { TodosComponent } from './todos/todos.component';
 import { NgModule } from '@angular/core';
-import { ActiveComponent } from './todos/todos/active/active.component';
-import { CompletedComponent } from './todos/todos/completed/completed.component';
+import { ActiveComponent } from './todos/active/active.component';
+import { CompletedComponent } from './todos/completed/completed.component';
 import { Routes, RouterModule } from '@angular/router';
 
 

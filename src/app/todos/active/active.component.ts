@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Todo } from './../../todo.model';
-import { TodoService } from './../../todo.services';
+import { Todo } from './../todo.model';
+import { TodoService } from './../todo.services';
+
 
 @Component({
   selector: 'app-active',
