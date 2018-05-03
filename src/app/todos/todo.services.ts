@@ -110,6 +110,10 @@ export class TodoService implements OnInit {
             }
         }
     }
+
+    clearTodos() {
+        this.todos = [];
+        this.todosChanged.emit(this.todos.slice());
+    }
 }
 
-// TODO: fixed the code for active and completed methods

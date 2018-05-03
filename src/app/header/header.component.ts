@@ -3,6 +3,7 @@ import { Response } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import { AuthService } from './../auth.service';
 import { DataStorageService } from './../data.storage.service';
+import { TodoService } from '../todos/todo.services';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ import { DataStorageService } from './../data.storage.service';
 export class HeaderComponent implements OnInit {
   title = 'Anguar Todo App';
   constructor(private dataStorageService: DataStorageService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private todoService: TodoService) { }
 
   ngOnInit() {
   }
@@ -34,6 +36,7 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+    this.todoService.clearTodos();
   }
 
   onFetchList() {
