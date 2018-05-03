@@ -20,6 +20,6 @@ export class DataStorageService {
                     const todos: Todo[] = response.json();
                     this.todoService.setTodos(todos);
                 }
-            )
+            );
     }
 }

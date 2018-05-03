@@ -1,6 +1,7 @@
 import { DataStorageService } from './../data.storage.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Response } from '@angular/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,20 @@ import { Response } from '@angular/http';
 })
 export class HeaderComponent implements OnInit {
   title = 'Anguar Todo App';
-
   constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
+  }
+
+  onSignin(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    console.log(email, password);
+
+  }
+
+  onSignup() {
+
   }
 
   onSaveList() {

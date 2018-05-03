@@ -13,6 +13,7 @@ import { DataStorageService } from './data.storage.service';
 import { TodoService } from './todos/todo.services';
 import { HttpModule } from '@angular/http';
 import { HeaderComponent } from './header/header.component';
+import { SignupComponent } from './header/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HeaderComponent } from './header/header.component';
     ActiveComponent,
     CompletedComponent,
     NavigationComponent,
-    HeaderComponent
+    HeaderComponent,
+    SignupComponent
   ],
   imports: [
     AppRoutingModule,
