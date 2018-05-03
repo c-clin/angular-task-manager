@@ -12,11 +12,19 @@ import { TodoService } from '../todos/todo.services';
 })
 export class HeaderComponent implements OnInit {
   title = 'Anguar Todo App';
+  authStatus;
+
   constructor(private dataStorageService: DataStorageService,
               private authService: AuthService,
               private todoService: TodoService) { }
 
   ngOnInit() {
+    this.authService.authentication
+      .subscribe(
+        (auth: boolean) => {
+          this.authStatus = auth;
+        }
+      );
   }
 
   onSignin(form: NgForm) {

@@ -2,10 +2,12 @@ import { TodoService } from './todos/todo.services';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, Route } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AuthService {
     token: string;
+    authentication = new Subject<Boolean>();
 
     constructor(private router: Router) {}
 
@@ -30,7 +32,10 @@ export class AuthService {
                     this.router.navigate(['/']);
                     firebase.auth().currentUser.getToken()
                         .then(
-                            (token: string) => this.token = token
+                            (token: string) => {
+                                this.token = token;
+                                this.isAuthenticated();
+                            }
                         );
                 }
             )
@@ -45,6 +50,7 @@ export class AuthService {
     logout() {
         firebase.auth().signOut();
         this.token = null;
+        this.isAuthenticated();
     }
 
     // since the getToken() method is a promise, i will return the token saved upon signing in
@@ -58,6 +64,7 @@ export class AuthService {
     }
 
     isAuthenticated() {
-        return this.token != null;
+        this.authentication.next(this.token != null);
+        console.log(this.token != null);
     }
 }
