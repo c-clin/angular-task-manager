@@ -1,16 +1,24 @@
 # Angular Task Manager
 
 ### What it is
-* This is a todo app made with Angular using all of the frameworks core functionalities.
- * Services & dependency injection
+An interactive task-managing app made with Angular using all of the frameworks core functionalities:
+ * Directives
+ * Services & dependency injections
  * Routers
  * Forms 
  * Observables
- * Custome pipe
+ * Custome pipes
  * Http Calls
+ * Animations
 
-* There is a sign up page and a log in function for the user to be authenticated.
-* Users are required to be authenticated to save and fetch data from back-end.
+### Awesome Features
+* Users can sign up and log in to gain access to the back end
+* Authentication is required to save and fetch data
+* A filter search bar is available for users to search through the list
+* Users can make edits to the tasks anytime 
+* Users can star the tasks to make them stand out
+* Users can easily navigate to show active and completed lists
+* The app flows beautifully with Angular animations
 
 ### Dependencies
 Built with Bootstrap and Firebase.
