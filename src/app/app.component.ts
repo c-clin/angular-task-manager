@@ -1,5 +1,5 @@
-import { TodoService } from './todos/todo.services';
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -7,20 +7,17 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  message = 'What is your main focus today?';
-  todoTextInput: string;
-  @ViewChild('todoTextInputRef') textInput: ElementRef;
 
-  constructor(private todoService: TodoService) { }
+
+  constructor() { }
 
   ngOnInit() {
-
+    firebase.initializeApp({
+      apiKey: 'AIzaSyDjRCP5HrNf5jZWKq8l6OzXgtfow2OBc50',
+      authDomain: 'ng-todo-list-c67bc.firebaseapp.com'
+    });
   }
 
-  addNewTodo() {
-    this.todoService.addNewTodo(this.textInput.nativeElement.value);
-    this.textInput.nativeElement.value = '';
-    this.todoTextInput = '';
-  }
+
 
 }

@@ -11,15 +11,28 @@
     <div class="nav navbar-nav  navbar-right" style="padding-top: 10px; margin-right: 20px;">
       <form class="form-inline" (ngSubmit)="onSignin(f)" #f="ngForm">
         <div class="form-group">
-          <label for="email">Email: </label>
-          <input type="email" class="form-control" id="email" name="email" ngModel>
+          <label for="signinEmail">Email: </label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="signinEmail" 
+            name="signinEmail" 
+            ngModel
+            email
+            required>
         </div>
         <div class="form-group">
-          <label for="password">Password: </label>
-          <input type="password" class="form-control" id="password" name="password" ngModel>
+          <label for="signinPassword">Password: </label>
+          <input 
+            type="password" 
+            class="form-control" 
+            id="signinPassword" 
+            name="signinPassword" 
+            ngModel
+            required>
         </div>
         <button type="submit" class="btn btn-success">Login</button>
-        <button type="button" class="btn btn-info" (click)="onSignup()">Sign Up</button>
+        <button type="button" class="btn btn-info" routerLink="/signup">Sign Up</button>
       </form>
     </div>
       

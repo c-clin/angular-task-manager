@@ -3,14 +3,32 @@
     <div class="col-xs-8 col-xs-offset-2">
       <form (ngSubmit)="onSignup(f)" #f="ngForm">
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" ngModel class="form-control">
+          <label for="email">Email:</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            ngModel 
+            class="form-control"
+            required
+            email
+            #email="ngModel">
         </div>
+        <p *ngIf="email.touched && !email.valid" class="help-block">Please enter a valid email address</p>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" ngModel class="form-control">
+          <label for="password">Password:</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            ngModel 
+            class="form-control"
+            required
+            #password="ngModel">
+          <p *ngIf="password.touched && password.value.length < 6" class="help-block">Password must be at least 6 characters long.</p>
         </div>
         <button class="btn btn-success">Sign up!</button>
+         <!-- routerLink="/todos/all" -->
       </form>
     </div>
   </div>

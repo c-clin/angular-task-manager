@@ -1,0 +1,29 @@
+<ul class="list-group list-group-flush">
+  <div *ngFor="let todo of todos; let i = index">
+    <div *ngIf="todo.edit == false">
+      <li class="list-group-item col-xs-12" [ngClass]="{'completed': todo.completed === true, 'list-group-item-warning': todo.star === true}"
+        style="margin-bottom: 5px">
+        <input type="checkbox" [checked]="todo.completed === true" class="form-check-input" (change)="onClickingCheckbox(i)" style="cursor:pointer"> {{ i + 1 }}. {{ todo.task }}
+        <button class="btn btn-danger pull-right" (click)="onRemoveTodo(i)">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+        <button class="btn btn-primary pull-right" style="margin-right: 5px" (click)="onEditTodo(i)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button class="btn btn-warning pull-right" style="margin-right: 5px" (click)="onStar(i)">
+          <span class="glyphicon glyphicon-star"></span>
+        </button>
+      </li>
+    </div>
+    <!-- edit mode template -->
+    <div class="row" *ngIf="todo.edit == true" style="margin-bottom: 5px">
+      <div class="col-xs-10">
+        <input type="text" class="form-control" [(ngModel)]="newTodoInput" style="height: 55px; margin-top: 20px">
+      </div>
+      <div class="col-xs-2" style="margin-top: 30px;">
+        <button class="btn btn-danger pull-right" (click)="onCancelEdit(i)">&#10008;</button>
+        <button class="btn btn-success pull-right" (click)="onSaveEdit(i)" style="margin-right: 5px">&#10004;</button>
+      </div>
+    </div>
+  </div>
+</ul>

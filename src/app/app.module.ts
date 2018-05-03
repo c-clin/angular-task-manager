@@ -11,9 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './todos/navigation/navigation.component';
 import { DataStorageService } from './data.storage.service';
 import { TodoService } from './todos/todo.services';
+import { AuthService } from './header/auth.service';
 import { HttpModule } from '@angular/http';
 import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './header/signup/signup.component';
+import { AllComponent } from './todos/all/all.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { SignupComponent } from './header/signup/signup.component';
     CompletedComponent,
     NavigationComponent,
     HeaderComponent,
-    SignupComponent
+    SignupComponent,
+    AllComponent
   ],
   imports: [
     AppRoutingModule,
@@ -31,7 +34,7 @@ import { SignupComponent } from './header/signup/signup.component';
     HttpModule,
     FormsModule
   ],
-  providers: [TodoService, DataStorageService],
+  providers: [TodoService, DataStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

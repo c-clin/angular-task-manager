@@ -4,13 +4,16 @@ import { ActiveComponent } from './todos/active/active.component';
 import { CompletedComponent } from './todos/completed/completed.component';
 import { TodosComponent } from './todos/todos.component';
 import { SignupComponent } from './header/signup/signup.component';
+import { AllComponent } from './todos/all/all.component';
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'all', pathMatch: 'full' },
-  { path: 'all', component: TodosComponent},
-  { path: 'active', component: ActiveComponent },
-  { path: 'completed', component: CompletedComponent },
+  { path: '', redirectTo: 'todos/all', pathMatch: 'full' },
+    { path: 'todos', component: TodosComponent, children: [
+      { path: 'all', component: AllComponent},
+      { path: 'active', component: ActiveComponent },
+      { path: 'completed', component: CompletedComponent }
+    ] },
   { path: 'signup', component: SignupComponent }
 ];
 
