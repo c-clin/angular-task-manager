@@ -1,7 +1,7 @@
 import { TodoService } from './todos/todo.services';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { Router, Route } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AuthService {
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(
-                () => console.log('success!')
+                response => this.router.navigate(['/'])
             )
             .catch(
                 error => {
@@ -22,7 +22,6 @@ export class AuthService {
                     alert(error);
                 }
             );
-            // display the error ot the user
     }
 
     signinUser(email: string, password: string) {
@@ -65,6 +64,5 @@ export class AuthService {
 
     isAuthenticated() {
         this.authentication.next(this.token != null);
-        console.log(this.token != null);
     }
 }
