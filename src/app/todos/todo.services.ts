@@ -54,7 +54,6 @@ export class TodoService implements OnInit {
     addNewTodo(todo: string) {
         this.todos.push(new Todo(todo, false, false, false));
         this.todosChanged.emit(this.todos.slice());
-        console.log('active is ' + this.active);
         this.activeTodosChanged.emit(this.active.slice());
     }
 

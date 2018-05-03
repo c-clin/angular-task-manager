@@ -1,12 +1,33 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from './../todo.model';
 import { TodoService } from './../todo.services';
-
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-active',
   templateUrl: './active.component.html',
-  styleUrls: ['./active.component.css']
+  styleUrls: ['./active.component.css'],
+  animations: [
+    trigger('list', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0) translateY(0)'
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'translateY(-100px)'
+        }),
+        animate(400)
+      ]),
+      transition('* => void', [
+        animate(500, style({
+          transform: 'translateX(150px)',
+          opacity: 0
+        }))
+      ])
+    ]),
+  ]
 })
 
 export class ActiveComponent implements OnInit {

@@ -1,16 +1,39 @@
 import { TodoService } from './../todo.services';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from './../todo.model';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-all',
   templateUrl: './all.component.html',
-  styleUrls: ['./all.component.css']
+  styleUrls: ['./all.component.css'],
+  animations: [
+    trigger('list', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0) translateY(0)'
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'translateY(-100px)'
+        }),
+        animate(400)
+      ]),
+      transition('* => void', [
+        animate(500, style({
+          transform: 'translateX(150px)',
+          opacity: 0
+        }))
+      ])
+    ]),
+  ]
 })
 export class AllComponent implements OnInit {
   todos: Todo[];
   newTodoInput: string;
-  filterText: string = '';
+  filterText = '';
+  state = 'starred';
 
   constructor(private todoService: TodoService) {}
 
@@ -47,5 +70,14 @@ export class AllComponent implements OnInit {
 
   onStar(index: number) {
     this.todoService.toggleStar(index);
+    this.state === 'starred' ? this.state = 'normal' : this.state = 'starred';
   }
+
+  // animationStarted(event) {
+  //   console.log(event);
+  // }
+
+  // animationEnded(event) {
+  //   console.log(event);
+  // }
 }
