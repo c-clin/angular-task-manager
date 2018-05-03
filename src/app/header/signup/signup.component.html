@@ -27,7 +27,8 @@
             #password="ngModel">
           <p *ngIf="password.touched && password.value.length < 6" class="help-block">Password must be at least 6 characters long.</p>
         </div>
-        <button class="btn btn-success">Sign up!</button>
+        <button class="btn btn-success">Sign up</button>
+        <button class="btn btn-danger" routerLink="/todos/all">Cancel</button>
          <!-- routerLink="/todos/all" -->
       </form>
     </div>
