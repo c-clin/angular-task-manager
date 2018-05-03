@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Response } from '@angular/http';
 import { NgForm } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { AuthService } from './../auth.service';
 import { DataStorageService } from './../data.storage.service';
 
 @Component({
@@ -30,6 +30,10 @@ export class HeaderComponent implements OnInit {
           console.log(response);
         }
       );
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
   onFetchList() {

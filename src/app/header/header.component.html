@@ -8,7 +8,7 @@
         </a>
       </div>
 
-    <ng-template [ngIf]="!this.authService.isAuthenticated()">
+    <ng-template [ngIf]="!authService.isAuthenticated()">
       <div class="nav navbar-nav  navbar-right" style="padding-top: 10px; margin-right: 20px;">
         <form class="form-inline" (ngSubmit)="onSignin(f)" #f="ngForm">
           <div class="form-group">
@@ -37,17 +37,16 @@
         </form>
       </div>
     </ng-template>
-
       
-
-      <div class="navbar-default" *ngIf="this.authService.isAuthenticated()">
-        <p class="navbar-text" style="float: right;">You're signed in!</p>
+      <div class="navbar-default" *ngIf="authService.isAuthenticated()">
         <ul class="nav navbar-nav navbar-right">
           <li><a style="cursor: pointer" (click)="onSaveList()">Save List</a></li>
           <li><a style="cursor: pointer" (click)="onFetchList()">Fetch List</a></li>
+          <li><button class="btn btn-danger" (click)="onLogout()" style="margin-top: 9px; margin-right: 40px;">Logout</button></li>
         </ul>
+        <p class="navbar-text" style="float: right;">You're signed in!</p>
       </div>
-      
+    
   </nav>
 </div>
 

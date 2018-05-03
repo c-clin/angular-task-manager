@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { TodoService } from './todos/todo.services';
-import { AuthService } from './header/auth.service';
+import { AuthService } from './auth.service';
 import { Todo } from './todos/todo.model';
+
 
 
 @Injectable()

@@ -10,7 +10,8 @@ export class TodoService implements OnInit {
     // made the todos private so it cannot be accessed from outside
     private todos: Todo[] = [
         new Todo('Clean my room', false, false, false),
-        new Todo('Feed my cats', false, false, false)
+        new Todo('Feed my cats', false, false, false),
+        new Todo('Sign up and log in to my account to save my list!', false, false, true)
     ];
 
     private active: Todo[];

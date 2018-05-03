@@ -35,6 +35,11 @@ export class AuthService {
             );
     }
 
+    logout() {
+        firebase.auth().signOut();
+        this.token = null;
+    }
+
     // since the getToken() method is a promise, i will return the token saved upon signing in
     // and generate a new one when using the firebase data
     getToken() {
