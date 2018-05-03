@@ -37,8 +37,9 @@ export class HeaderComponent implements OnInit {
     this.dataStorageService.storeTodos()
       .subscribe(
         (response: Response) => {
-          console.log(response);
-        }
+          alert('You have successfully saved your list!');
+        },
+        (error) => alert(error)
       );
   }
 

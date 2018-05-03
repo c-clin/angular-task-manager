@@ -25,7 +25,8 @@ export class DataStorageService {
                 (response: Response) => {
                     const todos: Todo[] = response.json();
                     this.todoService.setTodos(todos);
-                }
+                },
+                (error) => alert(error)
             );
     }
 }

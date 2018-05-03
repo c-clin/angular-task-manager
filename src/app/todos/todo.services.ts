@@ -11,7 +11,9 @@ export class TodoService implements OnInit {
     private todos: Todo[] = [
         new Todo('Clean my room', false, false, false),
         new Todo('Feed my cats', true, false, false),
-        new Todo('Sign up and log in to my account to save my list!', false, false, true)
+        new Todo('Sign up and log in to my account to save my list!', false, false, true),
+        new Todo('Buy some oranges', true, false, false),
+        new Todo('Watch the new Avengers movie', false, false, true)
     ];
 
     private active: Todo[];
@@ -28,6 +30,10 @@ export class TodoService implements OnInit {
     }
 
     getTodos() {
+        // prevent bigs in case the list is empty
+        if (!this.todos) {
+            return [new Todo('', false, false, false)];
+        }
         return this.todos.slice();
     }
 

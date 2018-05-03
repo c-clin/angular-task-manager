@@ -10,6 +10,7 @@ import { Todo } from './../todo.model';
 export class AllComponent implements OnInit {
   todos: Todo[];
   newTodoInput: string;
+  filterText: string = '';
 
   constructor(private todoService: TodoService) {}
 

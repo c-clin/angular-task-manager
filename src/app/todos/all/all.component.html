@@ -1,9 +1,23 @@
 <ul class="list-group list-group-flush">
-  <div *ngFor="let todo of todos; let i = index">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon3">Filter List</span>
+    <input type="text" name="task" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="filterText">
+  </div>
+  
+  <br><br>
+
+  <div *ngFor="let todo of todos | filter:filterText:'task'; let i = index">
     <div *ngIf="todo.edit == false">
-      <li class="list-group-item col-xs-12" [ngClass]="{'completed': todo.completed === true, 'list-group-item-warning': todo.star === true}"
+      <li 
+        class="list-group-item col-xs-12" 
+        [ngClass]="{'completed': todo.completed === true, 'list-group-item-warning': todo.star === true}"
         style="margin-bottom: 5px">
-        <input type="checkbox" [checked]="todo.completed === true" class="form-check-input" (change)="onClickingCheckbox(i)" style="cursor:pointer"> {{ i + 1 }}. {{ todo.task }}
+        <input 
+          type="checkbox" 
+          [checked]="todo.completed === true" 
+          class="form-check-input" 
+          (change)="onClickingCheckbox(i)" 
+          style="cursor:pointer"> {{ i + 1 }}. {{ todo.task }}
         <button class="btn btn-danger pull-right" (click)="onRemoveTodo(i)">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
@@ -18,7 +32,11 @@
     <!-- edit mode template -->
     <div class="row" *ngIf="todo.edit == true" style="margin-bottom: 5px">
       <div class="col-xs-10">
-        <input type="text" class="form-control" [(ngModel)]="newTodoInput" style="height: 55px; margin-top: 20px">
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="newTodoInput" 
+          style="height: 55px; margin-top: 20px">
       </div>
       <div class="col-xs-2" style="margin-top: 30px;">
         <button class="btn btn-danger pull-right" (click)="onCancelEdit(i)">&#10008;</button>
