@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from './../auth.service';
 import { DataStorageService } from './../data.storage.service';
 import { TodoService } from '../todos/todo.services';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',

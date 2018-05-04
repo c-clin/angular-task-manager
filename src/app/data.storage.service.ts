@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { TodoService } from './todos/todo.services';
 import { AuthService } from './auth.service';
 import { Todo } from './todos/todo.model';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 
 
 
@@ -23,7 +23,7 @@ export class DataStorageService {
         const token = this.authService.getToken();
         this.http.get('https://ng-todo-list-c67bc.firebaseio.com/todos.json?auth=' + token)
             // returns this empty task if the list in the database is empty to prevent error
-            .map(
+            .pipe(map(
                 (response: Response) => {
                     const todos: Todo[] = response.json();
                     if (!todos) {
@@ -32,7 +32,7 @@ export class DataStorageService {
                     }
                     return todos;
                 }
-            )
+            ))
             .subscribe(
                 (todos: Todo[]) => {
                     this.todoService.setTodos(todos);
