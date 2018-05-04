@@ -26,14 +26,11 @@ export class TodoService implements OnInit {
 
     setTodos(todos: Todo[]) {
         this.todos = todos;
+        console.log(this.todos);
         this.todosChanged.emit(this.todos.slice());
     }
 
     getTodos() {
-        // prevent bigs in case the list is empty
-        if (!this.todos) {
-            return [new Todo('', false, false, false)];
-        }
         return this.todos.slice();
     }
 

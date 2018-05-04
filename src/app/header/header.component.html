@@ -1,4 +1,4 @@
-<div class="container-fluid" style="padding: 0;">
+<div class="container-fluid">
   <nav class="navbar navbar-default">
       <div class="navbar-header" style="margin-left: 20px;">
         <a routerLink="/" class="navbar-brand" style="font-size: 23px; margin-bottom: 5px;">
@@ -8,7 +8,8 @@
       </div>
 
     <ng-template [ngIf]="!authStatus">
-      <div class="nav navbar-nav  navbar-right" style="padding-top: 10px; margin-right: 20px;">
+      <div 
+      class="nav navbar-nav  navbar-right" style="padding-top: 10px; margin: 0px 20px 0px 20px;">
         <form class="form-inline" (ngSubmit)="onSignin(f)" #f="ngForm">
           <div class="form-group">
             <label for="signinEmail">Email: </label>

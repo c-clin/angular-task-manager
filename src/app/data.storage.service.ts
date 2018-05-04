@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { TodoService } from './todos/todo.services';
 import { AuthService } from './auth.service';
 import { Todo } from './todos/todo.model';
+import 'rxjs/add/operator/map';
 
 
 
@@ -21,12 +22,21 @@ export class DataStorageService {
     getTodos() {
         const token = this.authService.getToken();
         this.http.get('https://ng-todo-list-c67bc.firebaseio.com/todos.json?auth=' + token)
-            .subscribe(
+            // returns this empty task if the list in the database is empty to prevent error
+            .map(
                 (response: Response) => {
                     const todos: Todo[] = response.json();
+                    if (!todos) {
+                        const todo = [new Todo('Your todo list is empty!', false, false, false)];
+                        return todo;
+                    }
+                }
+            )
+            .subscribe(
+                (todos: Todo[]) => {
                     this.todoService.setTodos(todos);
                 },
-                (error) => alert(error)
+                (error) => alert('error')
             );
     }
 }

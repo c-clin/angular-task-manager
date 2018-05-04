@@ -3,6 +3,7 @@
 ### What it is
 An interactive task-managing app made with Angular using all of the frameworks core functionalities:
  * Directives
+ * Data bindings
  * Services & dependency injections
  * Routers
  * Forms 
