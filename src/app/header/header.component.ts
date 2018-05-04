@@ -17,8 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(private dataStorageService: DataStorageService,
-              private authService: AuthService,
-              private todoService: TodoService) { }
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.subscription = this.authService.authentication
@@ -45,9 +44,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       );
   }
 
+  // reloads the page when user logs out
   onLogout() {
     this.authService.logout();
-    this.todoService.clearTodos();
+    alert('You have successfully logged out!');
+    window.location.reload();
+    return;
   }
 
   onFetchList() {

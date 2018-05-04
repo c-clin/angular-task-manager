@@ -30,6 +30,7 @@ export class DataStorageService {
                         const todo = [new Todo('Your todo list is empty!', false, false, false)];
                         return todo;
                     }
+                    return todos;
                 }
             )
             .subscribe(

@@ -112,10 +112,5 @@ export class TodoService implements OnInit {
             }
         }
     }
-
-    clearTodos() {
-        this.todos = [];
-        this.todosChanged.emit(this.todos.slice());
-    }
 }
 
