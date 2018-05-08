@@ -1,5 +1,6 @@
+import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TodoService } from './../todo.services';
-import { Component, OnInit } from '@angular/core';
 import { Todo } from './../todo.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -29,17 +30,18 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ]),
   ]
 })
-export class AllComponent implements OnInit {
+export class AllComponent implements OnInit, OnDestroy {
   todos: Todo[];
   newTodoInput: string;
   filterText = '';
   state = 'starred';
+  private subscription: Subscription;
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {
     this.todos = this.todoService.getTodos();
-    this.todoService.todosChanged.subscribe((todos: Todo[]) => {
+    this.subscription = this.todoService.todosChanged.subscribe((todos: Todo[]) => {
       this.todos = todos;
     });
     this.todoService.getActiveTodos();
@@ -71,6 +73,10 @@ export class AllComponent implements OnInit {
   onStar(index: number) {
     this.todoService.toggleStar(index);
     this.state === 'starred' ? this.state = 'normal' : this.state = 'starred';
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   // animationStarted(event) {

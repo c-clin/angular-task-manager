@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
+import { Subscription } from 'rxjs';
 import { Todo } from './../todo.model';
 import { TodoService } from './../todo.services';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -30,16 +31,17 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 
-export class ActiveComponent implements OnInit {
+export class ActiveComponent implements OnInit, OnDestroy {
   activeTodos: Todo[];
   activeNewTodoInput: string;
   originalInput: string;
+  private subscription: Subscription;
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {
     this.activeTodos = this.todoService.getActiveTodos();
-    this.todoService.todosChanged.subscribe((todos: Todo[]) => {
+    this.subscription = this.todoService.activeTodosChanged.subscribe((todos: Todo[]) => {
       this.activeTodos = todos;
     });
   }
@@ -77,5 +79,9 @@ export class ActiveComponent implements OnInit {
   onStar(index: number) {
     this.todoService.toggleActiveAndCompletedStar(this.activeTodos[index].task);
     this.updateActiveTodos();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,8 +1,8 @@
-import { TodoService } from './todos/todo.services';
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 import { Subject } from 'rxjs';
+import { TodoService } from './todos/todo.services';
 
 @Injectable()
 export class AuthService {
