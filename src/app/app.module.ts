@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,6 +19,7 @@ import { AuthService } from './auth.service';
 
 import { FilterPipe } from './pipes/filter.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,7 @@ import { FilterPipe } from './pipes/filter.pipe';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule
   ],
