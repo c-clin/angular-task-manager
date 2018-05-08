@@ -9,7 +9,7 @@ An interactive task-managing app made with Angular using all of the frameworks c
  * Forms 
  * Observables
  * Custome pipes
- * Http Calls
+ * Http Client
  * Animations
 
 ### Awesome Features
