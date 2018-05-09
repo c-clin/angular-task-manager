@@ -9,11 +9,11 @@ export class TodoService implements OnInit {
 
     // made the todos private so it cannot be accessed from outside
     private todos: Todo[] = [
-        new Todo('Clean my room', false, false, false),
-        new Todo('Feed my cats', true, false, false),
-        new Todo('Sign up and log in to my account to save my list!', false, false, true),
-        new Todo('Buy some oranges', true, false, false),
-        new Todo('Watch the new Avengers movie', false, false, true)
+        new Todo('Clean my room', false, false, false, new Date(2018, 0, 27, 10, 40)),
+        new Todo('Feed my cats', true, false, false, new Date(2018, 1, 29, 16, 20)),
+        new Todo('Sign up and log in to my account to save my list!', false, false, true, new Date(2018, 4, 3, 8, 28)),
+        new Todo('Buy some oranges', true, false, false, new Date(2018, 4, 20, 6, 9)),
+        new Todo('Watch the new Avengers movie', false, false, true, new Date(2018, 5, 20, 15, 37))
     ];
 
     private active: Todo[];
@@ -49,7 +49,7 @@ export class TodoService implements OnInit {
     }
 
     addNewTodo(todo: string) {
-        this.todos.push(new Todo(todo, false, false, false));
+        this.todos.push(new Todo(todo, false, false, false, new Date()));
         this.todosChanged.next(this.todos.slice());
         this.activeTodosChanged.next(this.getActiveTodos());
     }

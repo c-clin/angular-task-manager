@@ -20,6 +20,7 @@
           (click)="onStar(i)">
           <span class="glyphicon glyphicon-star"></span>
         </button>
+        <span class="pull-right" style="margin-right: 10px;"><em>{{ todo.started | date: 'short' }}</em></span>
       </li>
     </div>
     <!-- edit mode template -->

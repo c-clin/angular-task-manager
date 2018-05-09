@@ -22,7 +22,7 @@
           [checked]="todo.completed === true" 
           class="form-check-input" 
           (change)="onClickingCheckbox(i)" 
-          style="cursor:pointer"> {{ i + 1 }}. {{ todo.task }}
+          style="cursor:pointer"> {{ i + 1 }}. {{ todo.task }} 
         <button class="btn btn-danger pull-right" (click)="onRemoveTodo(i)">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
@@ -32,6 +32,7 @@
         <button class="btn btn-warning pull-right" style="margin-right: 5px" (click)="onStar(i)">
           <span class="glyphicon glyphicon-star"></span>
         </button>
+        <span class="pull-right" style="margin-right: 10px;"><em>{{ todo.started | date: 'short' }}</em></span>
       </li>
     </div>
     <!-- edit mode template -->

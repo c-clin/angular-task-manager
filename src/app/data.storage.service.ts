@@ -29,7 +29,7 @@ export class DataStorageService {
             .pipe(map(
                 (todos) => {
                     if (!todos) {
-                        const todo = [new Todo('Your todo list is empty!', false, false, false)];
+                        const todo = [new Todo('Your todo list is empty!', false, false, false, new Date())];
                         return todo;
                     }
                     return todos;
