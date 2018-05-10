@@ -4,7 +4,7 @@
       <span class="glyphicon glyphicon-filter"></span>
       Filter List
     </span>
-    <input type="text" name="task" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="filterText">
+    <input type="text" name="task" class="form-control filter" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="filterText">
   </div>
   
   <br><br>
@@ -15,8 +15,7 @@
     <div *ngIf="todo.edit == false">
       <li 
         class="list-group-item col-xs-12" 
-        [ngClass]="{'completed': todo.completed === true, 'list-group-item-warning': todo.star === true}"
-        style="margin-bottom: 5px">
+        [ngClass]="{'completed': todo.completed === true, 'list-group-item-warning': todo.star === true}">
         <input 
           type="checkbox" 
           [checked]="todo.completed === true" 
@@ -42,9 +41,9 @@
           type="text" 
           class="form-control" 
           [(ngModel)]="newTodoInput" 
-          style="height: 55px; margin-top: 20px">
+          style="height: 40px; margin-top: 10px; background-color: #ffe3e3; font-weight: 300;">
       </div>
-      <div class="col-xs-2" style="margin-top: 30px;">
+      <div class="col-xs-2" style="margin-top: 10px;">
         <button class="btn btn-danger pull-right" (click)="onCancelEdit(i)">&#10008;</button>
         <button class="btn btn-success pull-right" (click)="onSaveEdit(i)" style="margin-right: 5px">&#10004;</button>
       </div>

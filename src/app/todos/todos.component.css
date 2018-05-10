@@ -6,3 +6,33 @@
 .list-group-item-warning {
     color: red;
 }
+
+h4 {
+    font-size: 24px;
+    font-weight: 300;
+    color: #485460;
+}
+
+input {
+    font-size: 30px;
+    height: 60px;
+    border-bottom: 1.5px dotted #777;
+    border-right: initial;
+    border-left: initial;
+    border-top: initial;
+    background-color: #ffcccc;
+    box-shadow: inherit;
+    font-weight: 300;
+    
+}
+
+input:focus {
+    border-bottom: 1.5px dotted #777;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+hr {
+
+    margin-bottom: 40px;
+}

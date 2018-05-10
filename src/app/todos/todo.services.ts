@@ -12,8 +12,8 @@ export class TodoService implements OnInit {
         new Todo('Clean my room', false, false, false, new Date(2018, 0, 27, 10, 40)),
         new Todo('Feed my cats', true, false, false, new Date(2018, 1, 29, 16, 20)),
         new Todo('Sign up and log in to my account to save my list!', false, false, true, new Date(2018, 4, 3, 8, 28)),
-        new Todo('Buy some oranges', true, false, false, new Date(2018, 4, 20, 6, 9)),
-        new Todo('Watch the new Avengers movie', false, false, true, new Date(2018, 5, 20, 15, 37))
+        new Todo('Buy some oranges', true, false, false, new Date(2018, 3, 20, 6, 9)),
+        new Todo('Watch the new Avengers movie', false, false, true, new Date(2018, 4, 7, 15, 37))
     ];
 
     private active: Todo[];

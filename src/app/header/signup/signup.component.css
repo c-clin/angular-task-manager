@@ -1,0 +1,9 @@
+label,
+input,
+button {
+    font-weight: 300;
+}
+
+input {
+    background-color: beige;
+}

@@ -1,0 +1,16 @@
+nav {
+    background-color: #ffcccc;
+    border-color: #ffcccc;
+    color: #777;
+}
+
+input {
+    background-color: beige;
+}
+
+.title,
+a,
+label,
+input {
+    font-weight: 300;
+}

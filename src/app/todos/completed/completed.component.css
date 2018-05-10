@@ -6,6 +6,13 @@
 
 .list-group-item-warning {
     color: red;
-    border: 1px red solid;
+    font-weight: 700;
+}
+
+li {
+    background-color: #ffcccc;
+    border-color: #ffcccc;
+    margin-bottom: 5px;
+    font-weight: 300;
 }
 

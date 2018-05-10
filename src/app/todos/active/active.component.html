@@ -26,9 +26,13 @@
     <!-- edit mode template -->
     <div class="row" *ngIf="todo.edit === true" style="margin-bottom: 5px">
       <div class="col-xs-10">
-        <input type="text" class="form-control" [(ngModel)]="activeNewTodoInput" style="height: 55px; margin-top: 20px">
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="activeNewTodoInput" 
+          style="height: 40px; margin-top: 10px; background-color: #ffe3e3; font-weight: 300;">
       </div>
-      <div class="col-xs-2" style="margin-top: 30px;">
+      <div class="col-xs-2" style="margin-top: 10px;">
         <button class="btn btn-danger pull-right" (click)="onCancelEdit(i)">&#10008;</button>
         <button class="btn btn-success pull-right" (click)="onSaveEdit(i)" style="margin-right: 5px">&#10004;</button>
       </div>

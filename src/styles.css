@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+        background-color: #ffcccc;
+        font-family: 'Lato', sans-serif;
+}
+
+button:focus {
+    outline: 0 !important;
+}

@@ -12,15 +12,10 @@
           placeholder="New task:" 
           [(ngModel)]="todoTextInput" 
           #todoTextInputRef
-          style="height: 40px;">
-        <span class="input-group-btn">
-          <button class="btn btn-primary" (click)="addNewTodo()" [disabled]="!todoTextInput" style="width: 70px; height: 40px;">
-            <span class="glyphicon glyphicon-plus"></span>
-          </button>
-        </span>
+          (keydown.enter)="addNewTodo()">
       </div>
     </div>
-    <hr>
+    <br><br>
     <div class="row">
       <div class="col-xs-12">
         <router-outlet></router-outlet>
