@@ -16,3 +16,8 @@ li {
     font-weight: 300;
 }
 
+@media only screen and (max-width: 1000px) {
+    .buttons {
+        display: block;
+    }
+}

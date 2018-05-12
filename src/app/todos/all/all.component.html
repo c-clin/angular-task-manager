@@ -22,16 +22,18 @@
           class="form-check-input" 
           (change)="onClickingCheckbox(i)" 
           style="cursor:pointer"> {{ i + 1 }}. {{ todo.task }} 
-        <button class="btn btn-danger pull-right" (click)="onRemoveTodo(i)">
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
-        <button class="btn btn-primary pull-right" style="margin-right: 5px" (click)="onEditTodo(i)">
-          <span class="glyphicon glyphicon-pencil"></span>
-        </button>
-        <button class="btn btn-warning pull-right" style="margin-right: 5px" (click)="onStar(i)">
-          <span class="glyphicon glyphicon-star"></span>
-        </button>
-        <span class="pull-right" style="margin-right: 10px;"><em>{{ todo.started | date: 'short' }}</em></span>
+        <span class="buttons">
+          <button class="btn btn-danger pull-right" (click)="onRemoveTodo(i)">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+          <button class="btn btn-primary pull-right" style="margin-right: 5px" (click)="onEditTodo(i)">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+          <button class="btn btn-warning pull-right" style="margin-right: 5px" (click)="onStar(i)">
+            <span class="glyphicon glyphicon-star"></span>
+          </button>
+        </span>
+        <span class="pull-right date" style="margin-right: 10px;"><em>{{ todo.started | date: 'short' }}</em></span>
       </li>
     </div>
     <!-- edit mode template -->

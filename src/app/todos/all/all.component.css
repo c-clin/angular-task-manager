@@ -34,3 +34,10 @@ input:focus {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
+@media only screen and (max-width: 1000px) {
+    .buttons {
+        display: block;
+    }
+
+}
